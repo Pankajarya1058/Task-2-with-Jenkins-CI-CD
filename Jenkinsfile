@@ -5,6 +5,8 @@ pipeline {
     IMAGE_NAME = 'frontendapp'
   }
 
+  def dockerImage
+
   stages {
     stage('Checkout Code') {
       steps {
@@ -27,7 +29,7 @@ pipeline {
           sh """
             docker stop reactjs-app || true
             docker rm reactjs-app || true
-            docker run -d --name reactjs-app -p 80:80 ${dockerImage.imageName}
+            docker run -d --name reactjs-app -p 80:80 ${dockerImage}
           """
         }
     }
