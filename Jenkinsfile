@@ -19,7 +19,7 @@ pipeline {
       steps {
         script {
           sh 'whoami'
-          dockerImage = docker.build("${IMAGE_NAME}")
+          sh 'docker build -t reactapp .'
         }
       }
     }
@@ -29,7 +29,7 @@ pipeline {
           sh """
             docker stop reactjs-app || true
             docker rm reactjs-app || true
-            docker run -d --name reactjs-app -p 80:80 ${dockerImage}
+            docker run -d --name reactjs-app -p 80:80 reactapp
           """
         }
     }
