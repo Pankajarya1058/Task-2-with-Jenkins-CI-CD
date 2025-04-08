@@ -5,8 +5,6 @@ pipeline {
     IMAGE_NAME = 'frontendapp'
   }
 
-  def dockerImage
-
   stages {
     stage('Checkout Code') {
       steps {
